@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/ContadorVisitas")
 public class ContadorVisitas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private int cant=0;
 
     /**
      * Default constructor. 
@@ -30,24 +31,22 @@ public class ContadorVisitas extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		ServletContext context = getServletContext();
-		Integer visitas = (Integer) context.getAttribute("contador");
-        
-		//System.out.println("Visitas: " + visitas);
+//		ServletContext context = getServletContext();
+//		Integer visitas = (Integer) context.getAttribute("contador");
+//        		
+//		if (visitas == null) {
+//            visitas = 1; // Si es la primera visita, inicializa el contador en 1
+//        } else {
+//            visitas++; // Incrementa el contador
+//        }        
+//		
+//		context.setAttribute("contador", visitas);
 		
-		if (visitas == null) {
-            visitas = 1; // Si es la primera visita, inicializa el contador en 1
-        } else {
-            visitas++; // Incrementa el contador
-        }        
-		
-		context.setAttribute("contador", visitas);
-		
-		//System.out.println("Visitas: " + visitas);
+		cant++;
 		
 		PrintWriter out = response.getWriter();
         out.println("<html><head><title>Contador Visitas</title></head><body>");
-        out.println("<h1>Bienvenido " + visitas + "</h1>");
+        out.println("<h1>Bienvenido " + cant + "</h1>");
         out.println("</body></html>");
 		out.close();
 	}
